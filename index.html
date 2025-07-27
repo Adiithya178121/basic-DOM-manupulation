@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic List</title>
+  <style>
+    /* Style for odd-numbered list items */
+    .odd {
+      font-weight: bold;
+      color: blue;
+    }
+
+    /* Style for even-numbered list items */
+    .even {
+      font-style: italic;
+      color: red;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 8px 12px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>My List</h2>
+
+  <!-- Unordered list with 3 initial items -->
+  <ul id="myList">
+    <li class="odd">Item 1</li>
+    <li class="even">Item 2</li>
+    <li class="odd">Item 3</li>
+  </ul>
+
+  <!-- Button to add a new item -->
+  <button id="addItemBtn">Add Item</button>
+
+  <script>
+    // Select the <ul> and button
+    const list = document.querySelector('#myList');
+    const addButton = document.querySelector('#addItemBtn');
+
+    // Add click event to button
+    addButton.addEventListener('click', () => {
+      // Determine the current number of items
+      const itemCount = list.children.length + 1;
+
+      // Create new <li> element
+      const newItem = document.createElement('li');
+      newItem.textContent = 'New Item';
+
+      // Apply style based on whether it's odd or even
+      if (itemCount % 2 === 1) {
+        newItem.classList.add('odd'); // Bold + Blue
+      } else {
+        newItem.classList.add('even'); // Italic + Red
+      }
+
+      // Append the new item to the list
+      list.appendChild(newItem);
+    });
+  </script>
+
+</body>
+</html>
